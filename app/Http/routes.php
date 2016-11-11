@@ -11,6 +11,10 @@
 |
 */
 
-$app->get('/', function () {
-    return view('home');
+$app->get('/', 'LinkController@home');
+$app->post('/new', 'LinkController@newLink');
+$app->get('/link', 'LinkController@link');
+$app->get('/redirect', 'RedirectController@redirect');
+$app->get('/notfound', function () {
+    return view('notfound');
 });

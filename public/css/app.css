@@ -1,0 +1,22 @@
+.add_url{
+  margin-top: 50px;
+}
+
+.badge{
+
+}
+
+.badge-true{
+  color: green;
+  background: green;
+}
+
+.badge-false{
+  color: #EA0000;
+  background: #EA0000;
+}
+
+/* 404 */
+.row404{
+  text-align: center;
+}
