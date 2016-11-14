@@ -1,6 +1,25 @@
 @extends('layout')
 
 @section('content')
+<?php
+if(isset($_SESSION['valid'])) {
+$errors = $_SESSION['valid'];
+
+?>
+<div class="alert alert-danger">
+      <ul>
+          <?php
+          foreach($errors as $error){
+              echo "<li>" . $error . "</li>";
+          }
+          ?>
+      </ul>
+</div>
+<?php
+}
+?>
+
+
 <div class = "container">
     <div class = "row">
         <!-- # add_url -->
@@ -20,7 +39,7 @@
               </div>
               <div class="form-group">
                 <label for="pas2">Confirm password</label>
-                <input type="password" class="form-control" id="pas2" placeholder="Password">
+                <input type="password" name = "password_confirmation" class="form-control" id="pas2" placeholder="Password">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
           </form>

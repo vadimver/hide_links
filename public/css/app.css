@@ -2,10 +2,7 @@
   margin-top: 50px;
 }
 
-.badge{
-
-}
-
+/* link */
 .badge-true{
   color: green;
   background: green;
@@ -16,7 +13,27 @@
   background: #EA0000;
 }
 
+.link-false{
+  color: #EA0000;
+  font-size: 12px!important;
+  text-align: center;
+}
+
+.link-true{
+  color: green;
+  font-size: 12px!important;
+  text-align: center;
+}
 /* 404 */
 .row404{
   text-align: center;
+}
+
+/* alert */
+.alert-danger{
+  text-align: center;
+}
+
+.alert-danger li{
+  list-style-type: none;
 }

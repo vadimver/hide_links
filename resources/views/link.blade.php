@@ -11,6 +11,11 @@
     @foreach ($links as $link)
     <div class = "col-sm-4 col-sm-offset-4 jumbotron">
        <ul class="list-group">
+           <li class="list-group-item">
+            <p class = "link-{{$col}}">
+              {{$link->date}}
+            </p>
+           </li>
           <li class="list-group-item">
             <span class="badge badge-{{$col}}">.</span>
             <a href = "{{ url('/redirect') }}?view={{$link->randset}}">{{ url('/') }}/{{$link->randset}}</a>

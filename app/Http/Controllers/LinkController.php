@@ -5,6 +5,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Link;
 use Illuminate\Support\Facades\Crypt;
+use Validator;
 
 class LinkController extends Controller
 {
@@ -22,6 +23,42 @@ class LinkController extends Controller
 
   public function newLink(Request $request)
    {
+     /**
+      * Validation.
+      *
+      */
+
+     $rules = array(
+       'url' => 'required|url',
+       'date' => 'required',
+       'password' => 'required|min:5|confirmed',
+       'password_confirmation' => 'required',
+    );
+
+
+    $validator = Validator::make($request->all(), $rules);
+    $errors = $validator->errors();
+    if ($validator->fails()) {
+    $errors = str_replace('{', '', $errors);
+    $errors = str_replace('}', '', $errors);
+    $errors = str_replace('[', '', $errors);
+    $errors = str_replace(']', '', $errors);
+    $errors = str_replace('"password":', '', $errors);
+    $errors = str_replace('"password_confirmation":', '', $errors);
+    $errors = str_replace('"url":', '', $errors);
+    $errors = str_replace('"date":', '', $errors);
+    $errors = explode(",", $errors);
+
+    $_SESSION['valid'] = $errors;
+
+    return view('home');
+    }
+
+      /**
+       * Add link
+       *
+       */
+
        $val = 'abcdefghijklmnopqrstuvwxyz1234567890';
        $randset = null;
        for($i = 0; $i <= 4; $i++) {
@@ -37,10 +74,16 @@ class LinkController extends Controller
 
        $a->save();
        return redirect('/link?view=' . $randset);
+
    }
 
   public function link()
   {
+
+      /**
+       * Get link
+       *
+       */
       date_default_timezone_set('Europe/Kiev');
       $datetime = Date('Y-m-d H:i:s');
 
